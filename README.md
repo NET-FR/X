@@ -1,32 +1,70 @@
-# X Scripts by Net.Fr 🚀 
+# 🚀 X Scripts by Net.Fr
 
-Bienvenue dans **X Scripts** ! 🎉 Votre référentiel dédié à une variété de scripts et programmes conçus pour optimiser et enrichir votre expérience sur le réseau social **X**.
+Welcome to **X Scripts**! 🎉 Your dedicated repository for a variety of scripts and programs designed to enhance and optimize your experience on the **X** social network.
 
-## 📚 Table des Matières
+## 📚 Table of Contents
 
 - [💡 Introduction](#-introduction)
-- [✨ Fonctionnalités](#-fonctionnalités)
-- [🛠️ Installation](#️-installation)
-- [📋 Utilisation](#-utilisation)
+- [✨ Features](#-features)
+- [🛠️ Prerequisites](#️-prerequisites)
+- [🔑 Obtaining Required Tokens](#-obtaining-required-tokens)
+- [📥 Installation](#-installation)
+- [💻 Usage](#-usage)
 - [🤝 Contribution](#-contribution)
-- [⚠️ Avertissement](#-avertissement)
-- [📄 Licence](#-licence)
+- [⚠️ Disclaimer](#-⚠️-disclaimer)
+- [📄 License](#-license)
 - [📬 Contact](#-contact)
 
 ## 💡 Introduction
 
-**X Scripts** est une collection de scripts et programmes open-source gratuits, développés par **Net.Fr**, visant à vous aider à gérer, automatiser et optimiser vos interactions sur **X**. Que vous souhaitiez supprimer des anciens tweets, analyser votre engagement ou automatiser des tâches répétitives, vous trouverez ce qu'il vous faut ! 🛠️
+**X Scripts** is a collection of free, open-source scripts and programs developed by **Net.Fr**. Our mission is to provide tools that help you manage, automate, and optimize your interactions on the **X** social network. Whether you're looking to delete old tweets, analyze engagement, or automate repetitive tasks, we've got you covered! 🛠️
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- **Script de Suppression de Tweets** : Supprimez facilement plusieurs tweets en une seule opération.
-- **Outils d'Analyse** : Obtenez des insights sur la performance de vos tweets.
-- **Scripts d'Automatisation** : Automatisez des tâches routinières pour gagner du temps.
-- **Plus Encore** : De nouveaux scripts seront ajoutés régulièrement ! 🎁
+- **Tweet Deletion Script**: Easily delete multiple tweets in one operation.
+- **Engagement Analysis Tools**: Gain insights into the performance of your tweets.
+- **Automation Scripts**: Streamline routine tasks to save time.
+- **And More**: New scripts are added regularly! 🎁
 
-## 🛠️ Installation
+## 🛠️ Prerequisites
 
-1. **Cloner le Référentiel :**
+Before using the scripts, ensure you have the following:
+
+- **Git** installed on your machine.
+- **Node.js** installed for running JavaScript scripts (if applicable).
+- An active **X** account.
+
+## 🔑 Obtaining Required Tokens
+
+To use certain scripts, you'll need specific tokens. Here's how to obtain them:
+
+### 1. **Bearer Token**
+
+The Bearer token is used for authenticating API requests.
+
+- **How to Get It**:
+  - Log in to your **X** account.
+  - Navigate to the [Developer Portal](https://developer.twitter.com/) (assuming similar to Twitter).
+  - Create a new application to obtain the Bearer token.
+  - **Note**: If **X** does not have a developer portal, refer to their API documentation or contact support.
+
+### 2. **Client ID and Client UUID**
+
+These identifiers are necessary for certain API interactions.
+
+- **How to Get It**:
+  - **Client ID**:
+    - Often provided when you register an application in the developer portal.
+    - If unavailable, inspect network requests when using **X** to find the `client_id`.
+  - **Client UUID**:
+    - Can be extracted from network requests when interacting with **X**.
+    - Use browser developer tools to monitor requests and locate the UUID.
+
+> 🔒 **Security Note**: Keep your tokens confidential. **Do not** share them publicly or commit them to public repositories.
+
+## 📥 Installation
+
+1. **Clone the Repository**
 
    ```bash
    git clone https://github.com/Net.Fr/X.git
