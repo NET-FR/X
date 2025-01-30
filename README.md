@@ -20,9 +20,12 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
 
 4. **Monitor Requests:**
    - You should now see a list of network requests (e.g., `ULXBFrT`).
+  ![Network Tab](https://github.com/NET-FR/X/blob/main/screen1.png)
 
 5. **Filter Requests:**
    - Click on **Fetch/XHR** to filter the requests.
+      ![Fetch XHR](https://github.com/NET-FR/X/blob/main/screen2.png)
+     
 
 6. **Identify Required Tokens:**
    - Click on any request in the results.
@@ -30,7 +33,9 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
      - `authorization`
      - `X-Client-Transaction-Id`
      - `X-Client-Uuid`
-   - Refer to the screenshot [here](#) for guidance.
+   - Refer to the screenshot all.json:
+     ![All.json](https://github.com/NET-FR/X/blob/main/screen3.png)
+     ![The IDs](https://github.com/NET-FR/X/blob/main/screen4.png)
 
 7. **Configure the Script:**
    - Open the `X-Post-TweetDelete.js` script from this repository.
@@ -159,9 +164,13 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
 
 4. **Surveiller les Requêtes:**
    - Vous devriez voir une liste de requêtes réseau (par exemple, `ULXBFrT`).
+     ![Network Tab](https://github.com/NET-FR/X/blob/main/screen1.png)
+
 
 5. **Filtrer les Requêtes:**
    - Cliquez sur **Fetch/XHR** pour filtrer les requêtes.
+    ![Fetch XHR](https://github.com/NET-FR/X/blob/main/screen2.png)
+
 
 6. **Identifier les Tokens Requis:**
    - Cliquez sur n'importe quelle requête dans les résultats.
@@ -169,7 +178,8 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
      - `authorization`
      - `X-Client-Transaction-Id`
      - `X-Client-Uuid`
-   - Référez-vous à la capture d'écran [ici](#) pour vous guider.
+     ![All.json](https://github.com/NET-FR/X/blob/main/screen3.png)
+     ![The IDs](https://github.com/NET-FR/X/blob/main/screen4.png)
 
 7. **Configurer le Script:**
    - Ouvrez le script `X-Post-TweetDelete.js` de ce dépôt.
