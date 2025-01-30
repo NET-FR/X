@@ -11,7 +11,7 @@
     var language_code = navigator.language.split("-")[0]
     var tweets_to_delete = []
     var user_id = getCookie("twid").substring(4);
-    var username = "EleCitoyenne" // replace with your username
+    var username = "m_ceb" // replace with your username
     var stop_signal = undefined
     var twitter_archive_content = undefined
     var twitter_archive_loading_confirmed = false
