@@ -38,7 +38,7 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
      ![The IDs](https://github.com/NET-FR/X/blob/main/screen4.png)
 
 7. **Configure the Script:**
-   - Open the `X-Post-TweetDelete.js` script from this repository.
+   - Open the `XPost-TweetDelete.js` script from this repository.
    - Replace the placeholder values with the tokens you found:
      ```javascript
      var authorization = "Bearer YOUR_BEARER_TOKEN"; // replace with your Bearer token
@@ -117,7 +117,7 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
 #### **Execution**
 
 - **Run the Script:**
-  - Copy and paste the entire `X-Post-TweetDelete.js` script into the browser console.
+  - Copy and paste the entire `XPost-TweetDelete.js` script into the browser console.
   - Press `Enter` and wait for the deletion to complete.
   - The console will display "DELETION COMPLETE" upon completion.
   - For any remaining tweets, rerun the script.
@@ -182,7 +182,7 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
      ![The IDs](https://github.com/NET-FR/X/blob/main/screen4.png)
 
 7. **Configurer le Script:**
-   - Ouvrez le script `X-Post-TweetDelete.js` de ce dépôt.
+   - Ouvrez le script `XPost-TweetDelete.js` de ce dépôt.
    - Remplacez les valeurs des variables par les tokens trouvés :
      ```javascript
      var authorization = "Bearer YOUR_BEARER_TOKEN"; // remplacez par votre Bearer token
@@ -261,7 +261,7 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
 #### **Exécution**
 
 - **Exécuter le Script:**
-  - Copiez et collez l'intégralité du script `X-Post-TweetDelete.js` dans la console du navigateur.
+  - Copiez et collez l'intégralité du script `XPost-TweetDelete.js` dans la console du navigateur.
   - Appuyez sur `Entrée` et attendez que la suppression soit terminée.
   - La console affichera "DELETION COMPLETE" une fois terminée.
   - Pour tout tweet restant, relancez le script.
@@ -327,7 +327,7 @@ To include images in your tutorials or README, follow these steps:
 
 ---
 
-That's it! Your repository **NET-FR/X** now includes the updated and functional `X-Post-TweetDelete.js` script along with comprehensive tutorials in both English and French. Images can be easily uploaded and embedded in your README using the steps above.
+That's it! Your repository **NET-FR/X** now includes the updated and functional `XPost-TweetDelete.js` script along with comprehensive tutorials in both English and French. Images can be easily uploaded and embedded in your README using the steps above.
 
 If you need further assistance, feel free to ask!
 
@@ -368,7 +368,7 @@ Bienvenue dans **X Scripts** ! 🎉 Ce dépôt est une version améliorée et fo
    - Référez-vous à la capture d'écran [ici](#) pour vous guider.
 
 7. **Configurer le Script:**
-   - Ouvrez le script `X-Post-TweetDelete.js` de ce dépôt.
+   - Ouvrez le script `XPost-TweetDelete.js` de ce dépôt.
    - Remplacez les valeurs des variables par les tokens trouvés :
      ```javascript
      var authorization = "Bearer YOUR_BEARER_TOKEN"; // remplacez par votre Bearer token
@@ -447,7 +447,7 @@ Bienvenue dans **X Scripts** ! 🎉 Ce dépôt est une version améliorée et fo
 #### **Exécution**
 
 - **Exécuter le Script:**
-  - Copiez et collez l'intégralité du script `X-Post-TweetDelete.js` dans la console du navigateur.
+  - Copiez et collez l'intégralité du script `XPost-TweetDelete.js` dans la console du navigateur.
   - Appuyez sur `Entrée` et attendez que la suppression soit terminée.
   - La console affichera "DELETION COMPLETE" une fois terminée.
   - Pour tout tweet restant, relancez le script.
