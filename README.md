@@ -1,70 +1,458 @@
 # 🚀 X Scripts by Net.Fr
 
-Welcome to **X Scripts**! 🎉 Your dedicated repository for a variety of scripts and programs designed to enhance and optimize your experience on the **X** social network.
+Welcome to **X Scripts**! 🎉 This repository is an improved and functional version of the [DeleteTweets](https://github.com/Lyfhael/DeleteTweets) repository, designed to enhance your experience on the **X** social network.
 
-## 📚 Table of Contents
+## 📄 Tutorials
 
-- [💡 Introduction](#-introduction)
-- [✨ Features](#-features)
-- [🛠️ Prerequisites](#️-prerequisites)
-- [🔑 Obtaining Required Tokens](#-obtaining-required-tokens)
-- [📥 Installation](#-installation)
-- [💻 Usage](#-usage)
-- [🤝 Contribution](#-contribution)
-- [⚠️ Disclaimer](#-⚠️-disclaimer)
-- [📄 License](#-license)
-- [📬 Contact](#-contact)
+### 📝 English Tutorial
 
-## 💡 Introduction
+#### **Text Tutorial**
 
-**X Scripts** is a collection of free, open-source scripts and programs developed by **Net.Fr**. Our mission is to provide tools that help you manage, automate, and optimize your interactions on the **X** social network. Whether you're looking to delete old tweets, analyze engagement, or automate repetitive tasks, we've got you covered! 🛠️
+1. **Navigate to X:**
+   - Go to [https://twitter.com/](https://twitter.com/).
 
-## ✨ Features
+2. **Open Developer Tools:**
+   - Press `CTRL + SHIFT + I` to open DevTools.
 
-- **Tweet Deletion Script**: Easily delete multiple tweets in one operation.
-- **Engagement Analysis Tools**: Gain insights into the performance of your tweets.
-- **Automation Scripts**: Streamline routine tasks to save time.
-- **And More**: New scripts are added regularly! 🎁
+3. **Access the Network Tab:**
+   - Click on the **Network** tab in DevTools.
+   - If requests are not being recorded, press `CTRL + E` and wait for 5 seconds.
 
-## 🛠️ Prerequisites
+4. **Monitor Requests:**
+   - You should now see a list of network requests (e.g., `ULXBFrT`).
 
-Before using the scripts, ensure you have the following:
+5. **Filter Requests:**
+   - Click on **Fetch/XHR** to filter the requests.
 
-- **Git** installed on your machine.
-- **Node.js** installed for running JavaScript scripts (if applicable).
-- An active **X** account.
+6. **Identify Required Tokens:**
+   - Click on any request in the results.
+   - Look for the following values in the request headers:
+     - `authorization`
+     - `X-Client-Transaction-Id`
+     - `X-Client-Uuid`
+   - Refer to the screenshot [here](#) for guidance.
 
-## 🔑 Obtaining Required Tokens
+7. **Configure the Script:**
+   - Open the `X-Post-TweetDelete.js` script from this repository.
+   - Replace the placeholder values with the tokens you found:
+     ```javascript
+     var authorization = "Bearer YOUR_BEARER_TOKEN"; // replace with your Bearer token
+     var client_tid = "YOUR_CLIENT_TRANSACTION_ID"; // replace with your Client Transaction ID
+     var client_uuid = "YOUR_CLIENT_UUID"; // replace with your Client UUID
+     var username = "YourUsername"; // replace with your X username
+     ```
 
-To use certain scripts, you'll need specific tokens. Here's how to obtain them:
+#### **Filtering / Options**
 
-### 1. **Bearer Token**
+1. **Delete Tweets Within a Specific Date Range:**
+   - Edit the `before_date` and `after_date` in the `delete_options` variable:
+     ```javascript
+     "after_date": new Date('1900-01-01'), // year-month-day
+     "before_date": new Date('2100-01-01') // year-month-day
+     ```
+   - **Example:** To delete tweets from July 3rd, 2023:
+     ```javascript
+     "after_date": new Date('2023-07-02'), // year-month-day
+     "before_date": new Date('2023-07-04') // year-month-day
+     ```
 
-The Bearer token is used for authenticating API requests.
+2. **Filter Tweets by Keywords:**
+   - To delete tweets containing specific keywords, modify the `match_any_keywords` array:
+     ```javascript
+     var delete_options = {
+         "delete_message_with_url_only": false,
+         "match_any_keywords": ["Hi", "Hello"]
+     }
+     ```
 
-- **How to Get It**:
-  - Log in to your **X** account.
-  - Navigate to the [Developer Portal](https://developer.twitter.com/) (assuming similar to Twitter).
-  - Create a new application to obtain the Bearer token.
-  - **Note**: If **X** does not have a developer portal, refer to their API documentation or contact support.
+3. **Delete Tweets Containing Links Only:**
+   - Set `delete_message_with_url_only` to `true`:
+     ```javascript
+     "delete_message_with_url_only": true
+     ```
+   - This can be combined with keyword filtering.
 
-### 2. **Client ID and Client UUID**
+4. **Ignore Specific Tweets:**
+   - Add tweet IDs you want to keep in the `tweets_to_ignore` array:
+     ```javascript
+     "tweets_to_ignore": ["00000000000000", "111111111111111", "222222222222"]
+     ```
 
-These identifiers are necessary for certain API interactions.
+5. **Unretweet Option:**
+   - To also unretweet, set the `unretweet` property:
+     ```javascript
+     "unretweet": true
+     ```
 
-- **How to Get It**:
-  - **Client ID**:
-    - Often provided when you register an application in the developer portal.
-    - If unavailable, inspect network requests when using **X** to find the `client_id`.
-  - **Client UUID**:
-    - Can be extracted from network requests when interacting with **X**.
-    - Use browser developer tools to monitor requests and locate the UUID.
+6. **Handling Old Tweets:**
+   - If some tweets are not deleted and no errors are thrown, set `old_tweets` to `true` and rerun the script:
+     ```javascript
+     "old_tweets": true
+     ```
 
-> 🔒 **Security Note**: Keep your tokens confidential. **Do not** share them publicly or commit them to public repositories.
+7. **Do Not Remove Pinned Tweet:**
+   - By default, the script avoids removing your pinned tweet. This is controlled by:
+     ```javascript
+     "do_not_remove_pinned_tweet": true
+     ```
 
-## 📥 Installation
+8. **Delete Specific Tweet IDs Only:**
+   - To override default search and delete only specific tweets, use:
+     ```javascript
+     "delete_specific_ids_only": ["tweet_id1", "tweet_id2"]
+     ```
 
-1. **Clone the Repository**
+9. **From Archive Option:**
+   - For faster and more comprehensive deletion without rate limits, enable the archive option:
+     ```javascript
+     "from_archive": true
+     ```
+   - Download your archive from X, set this option to `true`, and upload your `tweets.js` file when prompted.
 
-   ```bash
-   git clone https://github.com/Net.Fr/X.git
+#### **Execution**
+
+- **Run the Script:**
+  - Copy and paste the entire `X-Post-TweetDelete.js` script into the browser console.
+  - Press `Enter` and wait for the deletion to complete.
+  - The console will display "DELETION COMPLETE" upon completion.
+  - For any remaining tweets, rerun the script.
+
+#### **Support**
+
+- **Issues:** Feel free to open an issue on [GitHub Issues](https://github.com/NET-FR/X/issues).
+- **Tickets:** Support tickets are welcomed in English and French 🇫🇷.
+
+#### **FAQ**
+
+- **Do I need to include the Bearer part of the authorization key?**
+  - **Yes**
+
+- **I can't find X-Client-Transaction-Id/X-Client-Uuid/authorization:**
+  - In the request list, search for requests named `client_event.json`. They are the most frequent and always contain the tokens you need.
+
+- **Uncaught TypeError: entries is not iterable:**
+  - If you encounter this error, edit the `random_resource` variable in the script:
+    ```javascript
+    var random_resource = "Q6aAvPw7azXZbqXzuqTALA";
+    ```
+  - Then, go to the `fetch_tweets()` function and update the `feature` variable as follows:
+    ```javascript
+    var feature = `&features=%7B%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22tweetypie_unmention_optimization_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Afalse%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_media_download_video_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D"`;
+    ```
+  - This should resolve the error. Additionally, ensure you have the latest version of the script updated on 5/09/2023.
+
+---
+
+### 📝 French Tutorial
+
+#### **Tutoriel Textuel**
+
+1. **Accéder à X:**
+   - Allez sur [https://twitter.com/](https://twitter.com/).
+
+2. **Ouvrir les Outils de Développement:**
+   - Appuyez sur `CTRL + SHIFT + I` pour ouvrir les DevTools.
+
+3. **Accéder à l'Onglet Réseau:**
+   - Cliquez sur l'onglet **Network** dans DevTools.
+   - Si les requêtes ne sont pas enregistrées, appuyez sur `CTRL + E` et attendez 5 secondes.
+
+4. **Surveiller les Requêtes:**
+   - Vous devriez voir une liste de requêtes réseau (par exemple, `ULXBFrT`).
+
+5. **Filtrer les Requêtes:**
+   - Cliquez sur **Fetch/XHR** pour filtrer les requêtes.
+
+6. **Identifier les Tokens Requis:**
+   - Cliquez sur n'importe quelle requête dans les résultats.
+   - Recherchez les valeurs suivantes dans les en-têtes de requête :
+     - `authorization`
+     - `X-Client-Transaction-Id`
+     - `X-Client-Uuid`
+   - Référez-vous à la capture d'écran [ici](#) pour vous guider.
+
+7. **Configurer le Script:**
+   - Ouvrez le script `X-Post-TweetDelete.js` de ce dépôt.
+   - Remplacez les valeurs des variables par les tokens trouvés :
+     ```javascript
+     var authorization = "Bearer YOUR_BEARER_TOKEN"; // remplacez par votre Bearer token
+     var client_tid = "YOUR_CLIENT_TRANSACTION_ID"; // remplacez par votre Client Transaction ID
+     var client_uuid = "YOUR_CLIENT_UUID"; // remplacez par votre Client UUID
+     var username = "YourUsername"; // remplacez par votre nom d'utilisateur X
+     ```
+
+#### **Filtrage / Options**
+
+1. **Supprimer les Tweets dans une Plage de Dates Spécifique:**
+   - Éditez `before_date` et `after_date` dans la variable `delete_options` :
+     ```javascript
+     "after_date": new Date('1900-01-01'), // année-mois-jour
+     "before_date": new Date('2100-01-01') // année-mois-jour
+     ```
+   - **Exemple:** Pour supprimer les tweets du 3 juillet 2023 :
+     ```javascript
+     "after_date": new Date('2023-07-02'), // année-mois-jour
+     "before_date": new Date('2023-07-04') // année-mois-jour
+     ```
+
+2. **Filtrer les Tweets par Mots-Clés:**
+   - Pour supprimer les tweets contenant des mots-clés spécifiques, modifiez le tableau `match_any_keywords` :
+     ```javascript
+     var delete_options = {
+         "delete_message_with_url_only": false,
+         "match_any_keywords": ["Hi", "Hello"]
+     }
+     ```
+
+3. **Supprimer les Tweets Contenant des Liens Uniquement:**
+   - Mettez `delete_message_with_url_only` à `true` :
+     ```javascript
+     "delete_message_with_url_only": true
+     ```
+   - Cela peut être combiné avec le filtrage par mots-clés.
+
+4. **Ignorer des Tweets Spécifiques:**
+   - Ajoutez les IDs des tweets que vous souhaitez conserver dans le tableau `tweets_to_ignore` :
+     ```javascript
+     "tweets_to_ignore": ["00000000000000", "111111111111111", "222222222222"]
+     ```
+
+5. **Option Unretweet:**
+   - Pour également annuler des retweets, mettez la propriété `unretweet` :
+     ```javascript
+     "unretweet": true
+     ```
+
+6. **Gestion des Anciens Tweets:**
+   - Si certains tweets ne sont pas supprimés et qu'aucune erreur n'est levée, mettez `old_tweets` à `true` et relancez le script :
+     ```javascript
+     "old_tweets": true
+     ```
+
+7. **Ne Pas Supprimer le Tweet Épinglé:**
+   - Par défaut, le script évite de supprimer votre tweet épinglé. Ceci est contrôlé par :
+     ```javascript
+     "do_not_remove_pinned_tweet": true
+     ```
+
+8. **Supprimer uniquement des IDs de Tweets Spécifiques:**
+   - Pour remplacer la recherche par défaut et supprimer uniquement des tweets spécifiques, utilisez :
+     ```javascript
+     "delete_specific_ids_only": ["tweet_id1", "tweet_id2"]
+     ```
+
+9. **Option Archive:**
+   - Pour une suppression plus rapide et complète sans limites de taux, activez l'option archive :
+     ```javascript
+     "from_archive": true
+     ```
+   - Téléchargez votre archive depuis X, activez cette option en la mettant à `true`, puis téléchargez votre fichier `tweets.js` lorsqu'il est demandé.
+
+#### **Exécution**
+
+- **Exécuter le Script:**
+  - Copiez et collez l'intégralité du script `X-Post-TweetDelete.js` dans la console du navigateur.
+  - Appuyez sur `Entrée` et attendez que la suppression soit terminée.
+  - La console affichera "DELETION COMPLETE" une fois terminée.
+  - Pour tout tweet restant, relancez le script.
+
+#### **Support**
+
+- **Issues:** N'hésitez pas à ouvrir une issue sur [GitHub Issues](https://github.com/NET-FR/X/issues).
+- **Tickets:** Les tickets de support sont acceptés en anglais et en français 🇫🇷.
+
+#### **FAQ**
+
+- **Dois-je inclure la partie Bearer de la clé d'autorisation ?**
+  - **Oui**
+
+- **Je ne trouve pas X-Client-Transaction-Id/X-Client-Uuid/authorization :**
+  - Dans la liste des requêtes, recherchez les requêtes nommées `client_event.json`. Elles sont les plus fréquentes et contiennent toujours les tokens nécessaires.
+
+- **Uncaught TypeError: entries is not iterable :**
+  - Si vous rencontrez cette erreur, éditez la variable `random_resource` dans le script :
+    ```javascript
+    var random_resource = "Q6aAvPw7azXZbqXzuqTALA";
+    ```
+  - Ensuite, allez dans la fonction `fetch_tweets()` et mettez à jour la variable `feature` comme suit :
+    ```javascript
+    var feature = `&features=%7B%22responsive_web_graphql_exclude_directive_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22tweetypie_unmention_optimization_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Afalse%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_media_download_video_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D"`;
+    ```
+  - Cela devrait résoudre l'erreur. De plus, assurez-vous d'avoir la dernière version du script mise à jour le 5/09/2023.
+
+---
+
+## 📸 How to Upload Images to GitHub
+
+To include images in your tutorials or README, follow these steps:
+
+1. **Navigate to Your Repository:**
+   - Go to [https://github.com/NET-FR/X/](https://github.com/NET-FR/X/) in your web browser.
+
+2. **Open the Repository:**
+   - Click on the repository **X** to open it.
+
+3. **Upload Images via Issues (Quick Method):**
+   - Go to the **Issues** tab in your repository.
+   - Click on **New Issue**.
+   - Drag and drop your image files into the issue description box. GitHub will upload the images and provide markdown links.
+   - **Copy the Image URLs** provided by GitHub.
+
+4. **Add Images to README:**
+   - Navigate back to the **Code** tab.
+   - Click on the `README.md` file.
+   - Click the **pencil icon** ✏️ to edit the file.
+   - Insert your images using the markdown syntax:
+     ```markdown
+     ![Alt Text](Image_URL)
+     ```
+     - Replace `Image_URL` with the URL you copied from the Issues.
+
+5. **Commit the Changes:**
+   - Scroll down and add a commit message, e.g., `"Add screenshots to README"`.
+   - Click **Commit changes** to save.
+
+6. **Delete the Temporary Issue (Optional):**
+   - After uploading and copying the image URLs, you can delete the temporary issue to keep your repository clean.
+
+---
+
+That's it! Your repository **NET-FR/X** now includes the updated and functional `X-Post-TweetDelete.js` script along with comprehensive tutorials in both English and French. Images can be easily uploaded and embedded in your README using the steps above.
+
+If you need further assistance, feel free to ask!
+
+---
+
+# X Scripts by Net.Fr
+
+Bienvenue dans **X Scripts** ! 🎉 Ce dépôt est une version améliorée et fonctionnelle du dépôt [DeleteTweets](https://github.com/Lyfhael/DeleteTweets), conçu pour optimiser votre expérience sur le réseau social **X**.
+
+## 📄 Tutoriels
+
+### 📝 Tutoriel en Français
+
+#### **Tutoriel Textuel**
+
+1. **Accéder à X:**
+   - Allez sur [https://twitter.com/m_ceb](https://twitter.com/m_ceb).
+
+2. **Ouvrir les Outils de Développement:**
+   - Appuyez sur `CTRL + SHIFT + I` pour ouvrir les DevTools.
+
+3. **Accéder à l'Onglet Réseau:**
+   - Cliquez sur l'onglet **Network** dans DevTools.
+   - Si les requêtes ne sont pas enregistrées, appuyez sur `CTRL + E` et attendez 5 secondes.
+
+4. **Surveiller les Requêtes:**
+   - Vous devriez voir une liste de requêtes réseau (par exemple, `ULXBFrT`).
+
+5. **Filtrer les Requêtes:**
+   - Cliquez sur **Fetch/XHR** pour filtrer les requêtes.
+
+6. **Identifier les Tokens Requis:**
+   - Cliquez sur n'importe quelle requête dans les résultats.
+   - Recherchez les valeurs suivantes dans les en-têtes de requête :
+     - `authorization`
+     - `X-Client-Transaction-Id`
+     - `X-Client-Uuid`
+   - Référez-vous à la capture d'écran [ici](#) pour vous guider.
+
+7. **Configurer le Script:**
+   - Ouvrez le script `X-Post-TweetDelete.js` de ce dépôt.
+   - Remplacez les valeurs des variables par les tokens trouvés :
+     ```javascript
+     var authorization = "Bearer YOUR_BEARER_TOKEN"; // remplacez par votre Bearer token
+     var client_tid = "YOUR_CLIENT_TRANSACTION_ID"; // remplacez par votre Client Transaction ID
+     var client_uuid = "YOUR_CLIENT_UUID"; // remplacez par votre Client UUID
+     var username = "YourUsername"; // remplacez par votre nom d'utilisateur X
+     ```
+
+#### **Filtrage / Options**
+
+1. **Supprimer les Tweets dans une Plage de Dates Spécifique:**
+   - Éditez `before_date` et `after_date` dans la variable `delete_options` :
+     ```javascript
+     "after_date": new Date('1900-01-01'), // année-mois-jour
+     "before_date": new Date('2100-01-01') // année-mois-jour
+     ```
+   - **Exemple:** Pour supprimer les tweets du 3 juillet 2023 :
+     ```javascript
+     "after_date": new Date('2023-07-02'), // année-mois-jour
+     "before_date": new Date('2023-07-04') // année-mois-jour
+     ```
+
+2. **Filtrer les Tweets par Mots-Clés:**
+   - Pour supprimer les tweets contenant des mots-clés spécifiques, modifiez le tableau `match_any_keywords` :
+     ```javascript
+     var delete_options = {
+         "delete_message_with_url_only": false,
+         "match_any_keywords": ["Hi", "Hello"]
+     }
+     ```
+
+3. **Supprimer les Tweets Contenant des Liens Uniquement:**
+   - Mettez `delete_message_with_url_only` à `true` :
+     ```javascript
+     "delete_message_with_url_only": true
+     ```
+   - Cela peut être combiné avec le filtrage par mots-clés.
+
+4. **Ignorer des Tweets Spécifiques:**
+   - Ajoutez les IDs des tweets que vous souhaitez conserver dans le tableau `tweets_to_ignore` :
+     ```javascript
+     "tweets_to_ignore": ["00000000000000", "111111111111111", "222222222222"]
+     ```
+
+5. **Option Unretweet:**
+   - Pour également annuler des retweets, mettez la propriété `unretweet` :
+     ```javascript
+     "unretweet": true
+     ```
+
+6. **Gestion des Anciens Tweets:**
+   - Si certains tweets ne sont pas supprimés et qu'aucune erreur n'est levée, mettez `old_tweets` à `true` et relancez le script :
+     ```javascript
+     "old_tweets": true
+     ```
+
+7. **Ne Pas Supprimer le Tweet Épinglé:**
+   - Par défaut, le script évite de supprimer votre tweet épinglé. Ceci est contrôlé par :
+     ```javascript
+     "do_not_remove_pinned_tweet": true
+     ```
+
+8. **Supprimer uniquement des IDs de Tweets Spécifiques:**
+   - Pour remplacer la recherche par défaut et supprimer uniquement des tweets spécifiques, utilisez :
+     ```javascript
+     "delete_specific_ids_only": ["tweet_id1", "tweet_id2"]
+     ```
+
+9. **Option Archive:**
+   - Pour une suppression plus rapide et complète sans limites de taux, activez l'option archive :
+     ```javascript
+     "from_archive": true
+     ```
+   - Téléchargez votre archive depuis X, activez cette option en la mettant à `true`, puis téléchargez votre fichier `tweets.js` lorsqu'il est demandé.
+
+#### **Exécution**
+
+- **Exécuter le Script:**
+  - Copiez et collez l'intégralité du script `X-Post-TweetDelete.js` dans la console du navigateur.
+  - Appuyez sur `Entrée` et attendez que la suppression soit terminée.
+  - La console affichera "DELETION COMPLETE" une fois terminée.
+  - Pour tout tweet restant, relancez le script.
+
+#### **Support**
+
+- **Issues:** N'hésitez pas à ouvrir une issue sur [GitHub Issues](https://github.com/NET-FR/X/issues).
+- **Tickets:** Les tickets de support sont acceptés en anglais et en français 🇫🇷.
+
+#### **FAQ**
+
+- **Dois-je inclure la partie Bearer de la clé d'autorisation ?**
+  - **Oui**
+
+- **Je ne trouve pas X-Client-Transaction-Id/X-Client-Uuid/authorization :**
+  - Dans la liste des requêtes, recherchez les requêtes nommées `client_event.json`. Elles sont les plus fréquentes et contiennent toujours les tokens nécessaires.
+
+Enjoy 💪
