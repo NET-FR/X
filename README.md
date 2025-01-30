@@ -9,7 +9,7 @@ Welcome to **X Scripts**! 🎉 This repository is an improved and functional ver
 #### **Text Tutorial**
 
 1. **Navigate to X:**
-   - Go to [https://twitter.com/](https://twitter.com/).
+   - Go to [https://twitter.com/m_ceb](https://twitter.com/m_ceb).
 
 2. **Open Developer Tools:**
    - Press `CTRL + SHIFT + I` to open DevTools.
