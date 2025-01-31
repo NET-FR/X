@@ -309,11 +309,11 @@ We help to construct a better Web
   
 ---
 
-## Who is NET.FR 🚀🧑🏼‍🚀
+## Qui est NET.FR 🚀🧑🏼‍🚀
 
-NER.FR is a french company who offer many services for professionals.
+NER.FR est une entreprise Française qui offre plusieurs services pour les professionnels.
 
-We help to construct a better Web
+Notre vision est de vous accompagner pour unWdb meilleur!
 
 1. **Devenir Partenaire**
    - Rendez vous ici [https://www.net.fr/devenir-partenaire](https://www.net.fr/devenir-partenaire) pour pouvoir revendre nos noms de domaines en marque blanche.
