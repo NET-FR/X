@@ -305,7 +305,7 @@ We help to construct a better Web
    - Here [https://x.com/netpfr](https://x.com/netpfr)
 
 3. **Find Us on Linkedin:**
-   - Here [https://linkedin.com/company/netfr](https://linkedin.com/company/netfr)
+   - Here [https://linkedin.com/company/netfr](https://linkedin.com/company/net-fr/)
   
 ---
 
@@ -313,7 +313,7 @@ We help to construct a better Web
 
 NER.FR est une entreprise Française qui offre plusieurs services pour les professionnels.
 
-Notre vision est de vous accompagner pour unWdb meilleur!
+Notre vision est de vous accompagner pour un Web meilleur!
 
 1. **Devenir Partenaire**
    - Rendez vous ici [https://www.net.fr/devenir-partenaire](https://www.net.fr/devenir-partenaire) pour pouvoir revendre nos noms de domaines en marque blanche.
@@ -322,7 +322,7 @@ Notre vision est de vous accompagner pour unWdb meilleur!
    - Ici [https://x.com/netpfr](https://x.com/netpfr)
 
 3. **Trouvez nous sur Linkedin:**
-   - Ici [https://linkedin.com/company/netfr](https://linkedin.com/company/netfr)
+   - Ici [https://linkedin.com/company/netfr](https://linkedin.com/company/net-fr/)
   
 
 
